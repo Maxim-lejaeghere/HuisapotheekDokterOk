@@ -17,7 +17,7 @@ namespace HuisAppotheek.WepApp.Controllers
 	{
 		public List<Dokter> Dokters { get; set; }
 		public Dokter Dokter { get; set; }
-		private readonly string baseUrl = "https://localhost:5001";
+		private readonly string baseUrl = "https://orp12a-huisapotheek-pietervanop.azurewebsites.net";
 		//"https://localhost:5001"
 		//"https://orp12a-huisapotheek-pietervanop.azurewebsites.net"
 		// GET: DokterController
