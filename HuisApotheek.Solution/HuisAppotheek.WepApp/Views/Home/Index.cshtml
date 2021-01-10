@@ -6,57 +6,100 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 
+<div class="row">
+    <div class="col">
+        @{
+            <form method="post" asp-controller="Home" asp-action="Index">
+                <div class="form-group">
+                    <label>Fill in a city please.</label>
+                    <input type="text" placeholder="Ex. Brussels" id="city" name="city" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
 
-@{
-    <form method="post" asp-controller="Home" asp-action="Index">
-        <div class="form-group">
-            <label>Fill in a city please.</label>
-            <input type="text" placeholder="Ex. Brussels" id="city" name="city" />
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Submit" class="btn btn-primary" />
-        </div>
-    </form>
+            if ((ViewBag.city == null || ViewBag.city == "") && ViewBag.cod != 404)
+            {
+                <div>No city detected.</div>
+            }
+            else
+            {
+                <div>
+                    <h3>@ViewBag.city</h3>
 
-    @*if ((ViewBag.city == null || ViewBag.city == "") && ViewBag.cod != 404)
-    {
-        <div class="city">Fill in a city please.</div>
-    }
-    else*@
-    {
-<div>
-    <h3>@ViewBag.city</h3>
-    
-    <div>
-        <label>Average Temperature:</label>
-        <label>
-            @ViewBag.maintemp <span> &deg;C </span>
-        </label>
+                    <div>
+                        <label>Average Temperature:</label>
+                        <label>
+                            @ViewBag.maintemp <span> &deg;C </span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>Minimum Temperature:</label>
+                        <label>
+                            @ViewBag.mintemp <span> &deg;C </span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>Maximum Temperature:</label>
+                        <label>
+                            @ViewBag.maxtemp <span> &deg;C </span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>Sunrise:</label>
+                        <label>
+                            @ViewBag.sunrise
+                        </label>
+                    </div>
+                    <div>
+                        <label>Sunset:</label>
+                        <label>
+                            @ViewBag.sunset
+                        </label>
+                    </div>
+                </div>
+            }
+        }
     </div>
-    <div>
-        <label>Minimum Temperature:</label>
-        <label>
-            @ViewBag.mintemp <span> &deg;C </span>
-        </label>
-    </div>
-    <div>
-        <label>Maximum Temperature:</label>
-        <label>
-            @ViewBag.maxtemp <span> &deg;C </span>
-        </label>
-    </div>
-    <div>
-        <label>Sunrise:</label>
-        <label>
-            @ViewBag.sunrise
-        </label>
-    </div>
-    <div>
-        <label>Sunset:</label>
-        <label>
-            @ViewBag.sunset
-        </label>
+    <div class="col">
+        <div>
+            Medicijnen die de volgende 30 dagen vervallen
+        </div>
+
+
+        @model IEnumerable<HuisAppotheek.Domain.DAL.Medicijn>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Volledigenaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Groep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Vervaldatum)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Volledigenaam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Groep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vervaldatum)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
-    }
-}

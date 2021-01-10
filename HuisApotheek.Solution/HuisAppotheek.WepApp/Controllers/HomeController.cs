@@ -23,16 +23,52 @@ namespace HuisAppotheek.WepApp.Controllers
 			_logger = logger;
 		}
 
-		public IActionResult Index()
-		{
-			return View();
-		}
+        //public IActionResult Index()
+        //{
+        //	return View();
+        //}
+        
+        public List<Medicijn> Medicijns { get; set; }
+        public Medicijn Medicijn { get; set; }
+        private readonly string baseUrl = "https://orp12a-huisapotheek-pietervanop.azurewebsites.net";
+
+
+
+        // GET: MedicijnController
+        public async Task<ActionResult> Index()
+        {
+            DateTime today = DateTime.Today;
+            DateTime todayPlus30Days = today.AddDays(30);
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync($"{baseUrl}/api/Medicijns"))
+                    {
+                        var jsonValue = await response.Content.ReadAsStringAsync();
+
+                        Medicijns = JsonConvert.DeserializeObject<List<Medicijn>>(jsonValue);
+
+                        Medicijns = Medicijns.Where(x => today <= x.Vervaldatum && x.Vervaldatum < todayPlus30Days).ToList();
+
+                        //Medicijnen = Medicijnen.Where(x => dateTime <= x.Vervaldatum && x.Vervaldatum <= plus30).ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
+            return View(Medicijns);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Index(string city)
         {
             var weather = new WeatherForecast();
-            string baseUrl = "https://millenniumfalcon.azurewebsites.net/api/weather";
+            string weatherUrl = "https://millenniumfalcon.azurewebsites.net/api/weather";
             if (city != null)
             {
                 if (ModelState.IsValid)
@@ -41,7 +77,7 @@ namespace HuisAppotheek.WepApp.Controllers
                     {
                         using (var httpClient = new HttpClient())
                         {
-                            using (var response = await httpClient.GetAsync($"{baseUrl}/{city}"))
+                            using (var response = await httpClient.GetAsync($"{weatherUrl}/{city}"))
                             {
                                 var apiValues = await response.Content.ReadAsStringAsync();
                                 weather = JsonConvert.DeserializeObject<WeatherForecast>(apiValues);
@@ -79,7 +115,32 @@ namespace HuisAppotheek.WepApp.Controllers
                     }
                 }
             }
-            return View();
+            //return View();
+            DateTime today = DateTime.Today;
+            DateTime todayPlus30Days = today.AddDays(30);
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync($"{baseUrl}/api/Medicijns"))
+                    {
+                        var jsonValue = await response.Content.ReadAsStringAsync();
+
+                        Medicijns = JsonConvert.DeserializeObject<List<Medicijn>>(jsonValue);
+
+                        Medicijns = Medicijns.Where(x => today <= x.Vervaldatum && x.Vervaldatum < todayPlus30Days).ToList();
+
+                        //Medicijnen = Medicijnen.Where(x => dateTime <= x.Vervaldatum && x.Vervaldatum <= plus30).ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
+            return View(Medicijns);
         }
 
 		public IActionResult Privacy()
