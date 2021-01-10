@@ -133,16 +133,46 @@ namespace HuisAppotheek.WepApp.Controllers
         // POST: PatientController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
-            try
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(IndexAsync));
+                Patient patient = new Patient();
+                patient.Patientid = id;
+                patient.Achternaam = collection["Achternaam"].ToString();
+                patient.Voornaam = collection["Voornaam"].ToString();
+                patient.Geboortedatumdatum = DateTime.Parse(collection["Geboortedatumdatum"]);
+                patient.Email = collection["Email"].ToString();
+
+
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(baseUrl);
+
+                    HttpResponseMessage response = new HttpResponseMessage();
+
+                    var jsonValue = JsonConvert.SerializeObject(patient);
+
+                    var urlApi = $"{baseUrl}/api/Patients";
+
+                    var postData = new StringContent(jsonValue, System.Text.Encoding.UTF8, "application/json");
+
+                    response = await client.PutAsync($"{urlApi}/{patient.Patientid}", postData);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
             }
-            catch
+
+            else
             {
                 return View();
             }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PatientController/Delete/5
