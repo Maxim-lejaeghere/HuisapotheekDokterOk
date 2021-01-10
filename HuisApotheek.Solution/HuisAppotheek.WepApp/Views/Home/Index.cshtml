@@ -4,5 +4,59 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+@{
+    <form method="post" asp-controller="Home" asp-action="Index">
+        <div class="form-group">
+            <label>Fill in a city please.</label>
+            <input type="text" placeholder="Ex. Brussels" id="city" name="city" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </form>
+
+    @*if ((ViewBag.city == null || ViewBag.city == "") && ViewBag.cod != 404)
+    {
+        <div class="city">Fill in a city please.</div>
+    }
+    else*@
+    {
+<div>
+    <h3>@ViewBag.city</h3>
+    
+    <div>
+        <label>Average Temperature:</label>
+        <label>
+            @ViewBag.maintemp <span> &deg;C </span>
+        </label>
+    </div>
+    <div>
+        <label>Minimum Temperature:</label>
+        <label>
+            @ViewBag.mintemp <span> &deg;C </span>
+        </label>
+    </div>
+    <div>
+        <label>Maximum Temperature:</label>
+        <label>
+            @ViewBag.maxtemp <span> &deg;C </span>
+        </label>
+    </div>
+    <div>
+        <label>Sunrise:</label>
+        <label>
+            @ViewBag.sunrise
+        </label>
+    </div>
+    <div>
+        <label>Sunset:</label>
+        <label>
+            @ViewBag.sunset
+        </label>
+    </div>
+</div>
+    }
+}

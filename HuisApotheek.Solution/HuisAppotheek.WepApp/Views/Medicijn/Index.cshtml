@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HuisAppotheek.Domain.DAL.Medicijn>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicijnid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Volledigenaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vervaldatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpVoorschrift)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Bijsluiter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlBijsluiter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dokterid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicijnid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volledigenaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vervaldatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpVoorschrift)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Postcode)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Bijsluiter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrlBijsluiter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dokterid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Medicijnid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Medicijnid }) 
+                @*|
+                @Html.ActionLink("Delete", "Delete", new { id = item.Medicijnid })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

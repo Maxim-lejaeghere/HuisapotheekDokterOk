@@ -17,9 +17,7 @@ namespace HuisAppotheek.WepApp.Controllers
 	{
 		public List<Dokter> Dokters { get; set; }
 		public Dokter Dokter { get; set; }
-		private readonly string baseUrl = "https://localhost:5001";
-		//"https://localhost:5001"
-		//"https://orp12a-huisapotheek-pietervanop.azurewebsites.net"
+		private readonly string baseUrl = "https://orp12a-huisapotheek-pietervanop.azurewebsites.net";
 		// GET: DokterController
 		public async Task<ActionResult> Index()
 		{
@@ -71,7 +69,6 @@ namespace HuisAppotheek.WepApp.Controllers
 		}
 
 		// GET: DokterController/Edit/5
-
 		public async Task<ActionResult> Edit(int id)
 		{
 			var dokter = new Dokter();
