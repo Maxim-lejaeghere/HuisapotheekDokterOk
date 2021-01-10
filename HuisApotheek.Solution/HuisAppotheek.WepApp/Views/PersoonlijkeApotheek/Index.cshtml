@@ -1,0 +1,77 @@
+﻿@model IEnumerable<HuisAppotheek.Domain.DAL.Persoonlijkeapotheek>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Apotheekid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dosering)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiefIngenomen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InApotheek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opmerkingen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patientid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicijnid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apotheekid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dosering)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiefIngenomen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InApotheek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opmerkingen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patientid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicijnid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id= item.Apotheekid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Apotheekid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Apotheekid })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

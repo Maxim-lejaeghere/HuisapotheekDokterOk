@@ -1,0 +1,68 @@
+﻿@model HuisAppotheek.Domain.DAL.Persoonlijkeapotheek
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Persoonlijkeapotheek</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Apotheekid" class="control-label"></label>
+                <input asp-for="Apotheekid" class="form-control" />
+                <span asp-validation-for="Apotheekid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dosering" class="control-label"></label>
+                <input asp-for="Dosering" class="form-control" />
+                <span asp-validation-for="Dosering" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Groep" class="control-label"></label>
+                <input asp-for="Groep" class="form-control" />
+                <span asp-validation-for="Groep" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ActiefIngenomen" /> @Html.DisplayNameFor(model => model.ActiefIngenomen)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="InApotheek" /> @Html.DisplayNameFor(model => model.InApotheek)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opmerkingen" class="control-label"></label>
+                <input asp-for="Opmerkingen" class="form-control" />
+                <span asp-validation-for="Opmerkingen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patientid" class="control-label"></label>
+                <input asp-for="Patientid" class="form-control" />
+                <span asp-validation-for="Patientid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medicijnid" class="control-label"></label>
+                <input asp-for="Medicijnid" class="form-control" />
+                <span asp-validation-for="Medicijnid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

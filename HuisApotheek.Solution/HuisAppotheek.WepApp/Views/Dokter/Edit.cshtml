@@ -1,0 +1,93 @@
+﻿@model HuisAppotheek.Domain.DAL.Dokter
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Dokter</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dokterid" class="control-label"></label>
+                <input asp-for="Dokterid" class="form-control" />
+                <span asp-validation-for="Dokterid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Voornaam" class="control-label"></label>
+                <input asp-for="Voornaam" class="form-control" />
+                <span asp-validation-for="Voornaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achternaam" class="control-label"></label>
+                <input asp-for="Achternaam" class="form-control" />
+                <span asp-validation-for="Achternaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Straat" class="control-label"></label>
+                <input asp-for="Straat" class="form-control" />
+                <span asp-validation-for="Straat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Huisnummer" class="control-label"></label>
+                <input asp-for="Huisnummer" class="form-control" />
+                <span asp-validation-for="Huisnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bus" class="control-label"></label>
+                <input asp-for="Bus" class="form-control" />
+                <span asp-validation-for="Bus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Postcode" class="control-label"></label>
+                <input asp-for="Postcode" class="form-control" />
+                <span asp-validation-for="Postcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stad" class="control-label"></label>
+                <input asp-for="Stad" class="form-control" />
+                <span asp-validation-for="Stad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Land" class="control-label"></label>
+                <input asp-for="Land" class="form-control" />
+                <span asp-validation-for="Land" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefoon" class="control-label"></label>
+                <input asp-for="Telefoon" class="form-control" />
+                <span asp-validation-for="Telefoon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobiel" class="control-label"></label>
+                <input asp-for="Mobiel" class="form-control" />
+                <span asp-validation-for="Mobiel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservatieurl" class="control-label"></label>
+                <input asp-for="Reservatieurl" class="form-control" />
+                <span asp-validation-for="Reservatieurl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<HuisAppotheek.Domain.DAL.Dokter>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dokterid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voornaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achternaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Straat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Huisnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Land)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefoon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobiel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservatieurl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dokterid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voornaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Achternaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Straat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Huisnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Land)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefoon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobiel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reservatieurl)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Dokterid }) |
+                @Html.ActionLink("Details", "Details", new {id=item.Dokterid}) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Dokterid })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
