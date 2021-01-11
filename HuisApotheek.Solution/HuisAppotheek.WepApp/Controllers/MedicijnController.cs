@@ -284,6 +284,9 @@ namespace HuisAppotheek.WepApp.Controllers
             return View(Medicijn);
         }
 
+
+
+        // [Authorize(Roles = "Administrator")]
         // POST: MedicijnController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
