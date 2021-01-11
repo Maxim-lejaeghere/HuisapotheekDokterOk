@@ -74,9 +74,11 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Medicijnid }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Medicijnid }) 
+                @Html.ActionLink("Details", "Details", new { id = item.Medicijnid })
                 |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Medicijnid })
+
+                @*<a asp-action="Delete">Delete</a>*@
             </td>
         </tr>
 }
