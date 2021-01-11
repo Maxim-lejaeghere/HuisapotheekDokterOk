@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using HuisAppotheek.Domain.DAL;
 using HuisAppotheek.WepApp.Models;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -22,17 +21,9 @@ namespace HuisAppotheek.WepApp.Controllers
 		{
 			_logger = logger;
 		}
-
-        //public IActionResult Index()
-        //{
-        //	return View();
-        //}
-        
         public List<Medicijn> Medicijns { get; set; }
         public Medicijn Medicijn { get; set; }
         private readonly string baseUrl = "https://orp12a-huisapotheek-pietervanop.azurewebsites.net";
-
-
 
         // GET: MedicijnController
         public async Task<ActionResult> Index()
